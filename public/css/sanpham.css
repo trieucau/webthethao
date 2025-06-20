@@ -1,0 +1,53 @@
+/* Product view styles (for vSanPham.php) */
+.wapperSanPham table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+  margin: 20px 0;
+}
+
+.wapperSanPham td {
+  padding: 15px;
+  text-align: center;
+  vertical-align: top;
+  background: #ffffff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  width: 20%; /* 5 products per row */
+}
+
+.wapperSanPham td:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.wapperSanPham td img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.wapperSanPham td span:nth-child(2) {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.wapperSanPham td span:nth-child(3) {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.wapperSanPham td span:nth-child(4) del {
+  font-size: 14px;
+  color: var(--accent-color);
+  font-weight: 400;
+}

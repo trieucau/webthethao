@@ -25,25 +25,6 @@
     echo "</table>";
 ?>
 
-<!-- <table>
-    <tr>
-        <th>Stt</th>
-        <th>Tên sản phẩm</th>
-        <th>Hình ảnh</th>
-        <th>Gía  bán</th>
-        <th>Gía gốc</th>
-        <th>Loại </th>
-        <th>Thao tác</th>
-    </tr>
-    <tr>
-        <td>Stt</td>
-        <td>Tên sản phẩm</td>
-        <td>Hình ảnh</td>
-        <td>Gía  bán</td>
-        <td>Gía gốc</td>
-        <td>Loại </td>
-        <td>Xóa | Sửa</td>
-    </tr>
-</table> -->
+
 </div>
 

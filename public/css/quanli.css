@@ -1,0 +1,75 @@
+/* Product management view styles (for vQlsanpham.php) */
+.wapperQLSP {
+  padding: 20px;
+  background: var(--bg-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin: 20px;
+}
+
+.wapperQLSP h3 {
+  font-size: 24px;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.wapperQLSP table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.wapperQLSP th {
+  background: var(--primary-color);
+  color: white;
+  padding: 12px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.wapperQLSP td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.wapperQLSP tr:hover {
+  background: rgba(74, 144, 226, 0.1);
+}
+
+.wapperQLSP td img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.wapperQLSP td:nth-child(4) {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.wapperQLSP td:nth-child(5) {
+  color: var(--accent-color);
+}
+
+.wapperQLSP td:last-child {
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.wapperQLSP td:last-child a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  margin: 0 5px;
+}
+
+.wapperQLSP td:last-child a:hover {
+  color: var(--primary-color);
+}

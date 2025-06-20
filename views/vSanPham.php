@@ -1,3 +1,4 @@
+<div class="wapperSanPham">
 <?php
     include_once("controllers/cProduct.php");
     $dem = 1;
@@ -22,3 +23,4 @@
     }
 
 ?>
+ </div>

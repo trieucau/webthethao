@@ -1,5 +1,5 @@
 /* Scoped styles for login view */
-.wapperLogin {
+.wapperForm {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
@@ -10,28 +10,30 @@
 }
 
 /* Form styles */
-.wapperLogin form {
+.wapperForm form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
 /* Table styles */
-.wapperLogin table {
+.wapperForm table {
   width: 100%;
   border-collapse: collapse;
 }
 
 /* Table cell styles */
-.wapperLogin td {
+.wapperForm td {
   padding: 10px;
   color: #333;
   font-size: 16px;
 }
 
 /* Input styles */
-.wapperLogin input[type="text"],
-.wapperLogin input[type="password"] {
+.wapperForm input[type="text"],
+.wapperForm input[type="number"],
+.wapperForm select,
+.wapperForm input[type="password"] {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
@@ -40,15 +42,17 @@
   transition: all 0.3s ease;
 }
 
-.wapperLogin input[type="text"]:focus,
-.wapperLogin input[type="password"]:focus {
+.wapperForm input[type="text"]:focus,
+.wapperForm input[type="number"]:focus,
+.wapperForm select:focus,
+.wapperForm input[type="password"]:focus {
   outline: none;
   border-color: #4a90e2; /* Vibrant blue */
   box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
 }
 
 /* Button styles */
-.wapperLogin button {
+.wapperForm button {
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -58,43 +62,21 @@
   transition: all 0.3s ease;
 }
 
-.wapperLogin button[type="submit"] {
+.wapperForm button[type="submit"] {
   background: #4a90e2; /* Vibrant blue */
   color: white;
 }
 
-.wapperLogin button[type="submit"]:hover {
+.wapperForm button[type="submit"]:hover {
   background: #f5a623; /* Warm yellow */
 }
 
-.wapperLogin button[type="reset"] {
+.wapperForm button[type="reset"] {
   background: #ff6b6b; /* Coral red */
   color: white;
   margin-left: 10px;
 }
 
-.wapperLogin button[type="reset"]:hover {
+.wapperForm button[type="reset"]:hover {
   background: #e55a5a;
-}
-
-/* Responsive design */
-@media (max-width: 480px) {
-  .wapperLogin {
-    margin: 20px;
-    padding: 15px;
-  }
-
-  .wapperLogin td {
-    display: block;
-    text-align: center;
-  }
-
-  .wapperLogin td:first-child {
-    margin-bottom: 5px;
-  }
-
-  .wapperLogin button {
-    width: 100%;
-    margin: 5px 0;
-  }
 }

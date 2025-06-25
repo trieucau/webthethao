@@ -1,10 +1,12 @@
 /* Product management view styles (for vQlsanpham.php) */
 .wapperQLSP {
-  padding: 20px;
   background: var(--bg-color);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
   margin: 20px;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
 .wapperQLSP h3 {
@@ -20,7 +22,6 @@
   border-collapse: collapse;
   background: #ffffff;
   border-radius: var(--border-radius);
-  overflow: hidden;
   box-shadow: var(--shadow);
 }
 

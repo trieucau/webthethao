@@ -7,7 +7,8 @@
     if (isset($_REQUEST['idloai'])) {
         $resProdAll = $p->getOneProdbyType($_REQUEST['idloai']);
     } elseif (isset($_REQUEST['btnTim'])) {
-        $resProdAll = $p->getProdbyName($_REQUEST['txtsearch']);
+        $name = $_REQUEST['txtsearch'];
+        $resProdAll = $p->getProdbyName($name);
     } else {
         $resProdAll = $p->getAllProd();
     }

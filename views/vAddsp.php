@@ -1,5 +1,5 @@
 <div class="wapperForm">
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>Tên sản phẩm: </td>
@@ -26,8 +26,12 @@
                     $allcat = $c->getAllCate();
 
                     echo '<select name="idloai">';
-                    while ($r = $allcat->fetch_assoc()) {
-                        echo '<option value="' . $r['IDLoai'] . '">' . $r['TenLoai'] . '</option>';
+                    if ($allcat instanceof mysqli_result) {
+                        while ($r = $allcat->fetch_assoc()) {
+                            echo '<option value="' . $r['IDLoai'] . '">' . $r['TenLoai'] . '</option>';
+                        }
+                    } else {
+                        echo '<option value="null">Không có dữ liệu</option>';
                     }
                     echo '</select>';
 
@@ -36,7 +40,7 @@
             </tr>
             <tr>
                 <td>Hình ảnh</td>
-                <td><input type="file" name="hinh" id="" required></td>
+                <td><input type="file" name="hinh" required></td>
             </tr>
             <tr>
                 <td colspan="2">
@@ -48,19 +52,21 @@
     </form>
 </div>
 <?php
-// include_once("controllers/cDangnhap.php");
-// $p = new CDangnhap();
-// if (isset($_POST["btnDn"])) {
-//     if ($p->checkLogin($_POST['textname'], $_POST['textpass'])) {
-//         $_SESSION['login'] = true;
-//         $gender = $_SESSION['gender'] == 1 ? 'anh' : 'chị';
-//         $fullname =  $_SESSION['fullname'];
-
-
-//         echo "<script>alert('Chào mừng $gender , $fullname quay lại'); </script>";
-//         header("refresh:0;url=index.php");
-//     } else {
-//         echo "<script>alert('Sai thông tin đăng nhập'); </script>";
-//     }
-// }
+include_once("controllers/cProduct.php");
+$p = new CProduct();
+if (isset($_REQUEST["btnAddsp"])) {
+    // echo $_REQUEST['tensp'] . $_FILES['hinh']['name'] . $_REQUEST['goc'] . $_REQUEST['ban'] . $_REQUEST['sluong'] . $_REQUEST['idloai'];
+    echo $_FILES['hinh']['type'];
+    $kq = $p->addProd($_REQUEST['tensp'], $_FILES['hinh'], $_REQUEST['goc'], $_REQUEST['ban'], $_REQUEST['sluong'], $_REQUEST['idloai']);
+    if ($kq === true) {
+        echo "<script>alert('Thêm sản phẩm thành công!!!'); </script>";
+        header("refresh:0;url=admin.php?p=qlsanpham");
+    } elseif ($kq === -2) {
+        echo "<script>alert('Lỗi tải file hình ảnh! Kiểm tra định dạng hoặc kích thước file.');</script>";
+    } elseif ($kq === -1) {
+        echo "<script>alert('Lỗi kết nối server');</script>";
+    } else {
+        echo "<script>alert('Thêm sản phẩm thât bại!!! vui lòng thử lại'); </script>";
+    }
+}
 ?>

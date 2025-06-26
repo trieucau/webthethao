@@ -5,7 +5,15 @@
     include_once("controllers/cProduct.php");
     $dem = 1;
     $p = new CProduct();
-    $resProdAll = $p->getAllProd();
+
+    if (isset($_REQUEST['btnTim'])) {
+        $name = $_REQUEST['txtsearch'];
+        $resProdAll = $p->getProdbyName($name);
+    } else {
+        $resProdAll = $p->getAllProd();
+    }
+
+
 
 
     echo "<table style='border-collapse: collapse;'>

@@ -36,9 +36,10 @@ include_once("controllers/cProduct.php");
                     echo "Chào mừng " . $gender . $_SESSION['fullname'] . " trở lại";
                 }
                 ?>
-                <form action="" method="get">
-                    <input type="text" name="txtseacher">
-                    <button type="submit">Tim</button>
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="get">
+                    <input type="hidden" name="p" value="<?php echo isset($_REQUEST['p']) ? htmlspecialchars($_REQUEST['p']) : ''; ?>">
+                    <input type="text" name="txtsearch">
+                    <button type="submit" name="btnTim">Tim</button>
                 </form>
             </div>
         </div>
@@ -68,10 +69,10 @@ include_once("controllers/cProduct.php");
 
             </div>
             <div class="right">
+                <?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>
 
                 <?php
                 $page = isset($_REQUEST['p']) ? $_REQUEST['p'] : '';
-
                 switch ($page) {
                     case 'dangnhap':
                         include_once('views/vDangnhap.php');

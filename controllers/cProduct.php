@@ -1,5 +1,7 @@
 <?php
 include_once("models/mProduct.php");
+include_once("cUpload.php");
+
 
 class CProduct
 {
@@ -53,5 +55,21 @@ class CProduct
         } else {
             return -1; //loi ket noi
         }
+    }
+
+    public function addProd($tensp, $file, $giagoc, $giaban, $soluong, $idloai)
+    {
+        $p = new MProduct();
+        $upload = new CUpload();
+
+        $pathname = $upload->uploadfile($file);
+
+        if ($pathname === false) {
+            return -2; // -2 Lỗi tải file
+        }
+
+        $res = $p->insertProd($tensp,  $pathname, $giagoc, $giaban, $soluong, $idloai);
+
+        return ($res !== -1) ? $res : -1; //kq -1 loi ket noi
     }
 }

@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <div class="wapperForm">
     <form action="" method="post" enctype="multipart/form-data">
         <table>
@@ -56,11 +57,11 @@ include_once("controllers/cProduct.php");
 $p = new CProduct();
 if (isset($_REQUEST["btnAddsp"])) {
     // echo $_REQUEST['tensp'] . $_FILES['hinh']['name'] . $_REQUEST['goc'] . $_REQUEST['ban'] . $_REQUEST['sluong'] . $_REQUEST['idloai'];
-    echo $_FILES['hinh']['type'];
+   // echo $_FILES['hinh']['type'];
     $kq = $p->addProd($_REQUEST['tensp'], $_FILES['hinh'], $_REQUEST['goc'], $_REQUEST['ban'], $_REQUEST['sluong'], $_REQUEST['idloai']);
     if ($kq === true) {
         echo "<script>alert('Thêm sản phẩm thành công!!!'); </script>";
-        header("refresh:0;url=admin.php?p=qlsanpham");
+        header("refresh:0; url=admin.php?p=qlsanpham");
     } elseif ($kq === -2) {
         echo "<script>alert('Lỗi tải file hình ảnh! Kiểm tra định dạng hoặc kích thước file.');</script>";
     } elseif ($kq === -1) {

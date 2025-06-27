@@ -69,7 +69,7 @@ include_once("controllers/cProduct.php");
 
             </div>
             <div class="right">
-                <?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>
+                 <?php // echo htmlspecialchars($_SERVER['REQUEST_URI']); ?> 
 
                 <?php
                 $page = isset($_REQUEST['p']) ? $_REQUEST['p'] : '';

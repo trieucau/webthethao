@@ -69,7 +69,8 @@ include_once("controllers/cProduct.php");
 
             </div>
             <div class="right">
-                 <?php // echo htmlspecialchars($_SERVER['REQUEST_URI']); ?> 
+                <?php // echo htmlspecialchars($_SERVER['REQUEST_URI']); 
+                ?>
 
                 <?php
                 $page = isset($_REQUEST['p']) ? $_REQUEST['p'] : '';
@@ -98,9 +99,13 @@ include_once("controllers/cProduct.php");
                     case 'themND':
                         include_once('views/vAddnd.php');
                         break;
+                    case 'suasp':
+                        include_once('views/vUpdate.php');
+                        break;
                     case 'quanli':
                         header("refresh:0;url=admin.php");
                         break;
+
                     default:
                         include_once('views/vSanPham.php');
                 }

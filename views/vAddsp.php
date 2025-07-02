@@ -1,5 +1,6 @@
-<?php ob_start();?>
+<?php ob_start(); ?>
 <div class="wapperForm">
+    <h3>Thêm sản phẩm</h3>
     <form action="" method="post" enctype="multipart/form-data">
         <table>
             <tr>
@@ -56,8 +57,6 @@
 include_once("controllers/cProduct.php");
 $p = new CProduct();
 if (isset($_REQUEST["btnAddsp"])) {
-    // echo $_REQUEST['tensp'] . $_FILES['hinh']['name'] . $_REQUEST['goc'] . $_REQUEST['ban'] . $_REQUEST['sluong'] . $_REQUEST['idloai'];
-   // echo $_FILES['hinh']['type'];
     $kq = $p->addProd($_REQUEST['tensp'], $_FILES['hinh'], $_REQUEST['goc'], $_REQUEST['ban'], $_REQUEST['sluong'], $_REQUEST['idloai']);
     if ($kq === true) {
         echo "<script>alert('Thêm sản phẩm thành công!!!'); </script>";

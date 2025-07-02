@@ -36,7 +36,10 @@
         <td>" . number_format($row['GiaGoc'], 0, ",", ".") . " VNĐ</td>
         <td>" . $row['SoLuong'] . " </td>
         <td>" . $row['TenLoai'] . " </td>
-        <td>Xóa | Sửa</td>
+        <td>
+            <a href='?p=suasp&idsp=" . $row['IDSanPham'] . "'>Sửa</a> | 
+            <a href='?p=xoasp&idsp=" . $row['IDSanPham'] . "'>Xóa</a>
+        </td>
     </tr>";
     }
     echo "</table>";

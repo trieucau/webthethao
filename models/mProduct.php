@@ -21,6 +21,24 @@ class MProduct
         }
     }
 
+    public function selectOneProd($id)
+    {
+        $p = new MConnect();
+        $conn = $p->openConnect($id);
+
+        if ($conn) {
+            $sql = "select * from sanpham s join loaisanpham l on s.IDLoai = l.IDLoai where IDSanPham = '$id' ";
+
+            $tbProd = mysqli_query($conn, $sql);
+
+            $p->closeConnect($conn);
+
+            return $tbProd;
+        } else {
+            return -1; //loi ket noi
+        }
+    }
+
     public function selectProdbyType($key)
     {
         $p = new MConnect();

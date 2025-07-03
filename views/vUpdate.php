@@ -55,7 +55,7 @@ if (isset($_REQUEST['idsp'])) {
             </tr>
             <tr>
                 <td>Hình ảnh</td>
-                <td><input type="file" name="hinh" required></td>
+                <td><input type="file" name="hinh"></td>
             </tr>
             <tr>
                 <td colspan="2"> <img src="img/sp/<?php if (isset($row['HinhAnh'])) echo $row['HinhAnh']; ?>"></td>
@@ -70,19 +70,19 @@ if (isset($_REQUEST['idsp'])) {
     </form>
 </div>
 <?php
-// include_once("controllers/cProduct.php");
-// $p = new CProduct();
-// if (isset($_REQUEST["btnUpdatesp"])) {
-//     $kq = $p->addProd($_REQUEST['tensp'], $_FILES['hinh'], $_REQUEST['goc'], $_REQUEST['ban'], $_REQUEST['sluong'], $_REQUEST['idloai']);
-//     if ($kq === true) {
-//         echo "<script>alert('Thêm sản phẩm thành công!!!'); </script>";
-//         header("refresh:0; url=admin.php?p=qlsanpham");
-//     } elseif ($kq === -2) {
-//         echo "<script>alert('Lỗi tải file hình ảnh! Kiểm tra định dạng hoặc kích thước file.');</script>";
-//     } elseif ($kq === -1) {
-//         echo "<script>alert('Lỗi kết nối server');</script>";
-//     } else {
-//         echo "<script>alert('Thêm sản phẩm thât bại!!! vui lòng thử lại'); </script>";
-//     }
-// }
+include_once("controllers/cProduct.php");
+$p = new CProduct();
+if (isset($_REQUEST["btnUpdatesp"])) {
+    $kq = $p->editProd($_REQUEST['idsp'], $_REQUEST['tensp'], $_FILES['hinh'], $row['HinhAnh'], $_REQUEST['goc'], $_REQUEST['ban'], $_REQUEST['sluong'], $_REQUEST['idloai']);
+    if ($kq === true) {
+        echo "<script>alert('Sửa sản phẩm thành công!!!'); </script>";
+        header("refresh:0; url=admin.php?p=qlsanpham");
+    } elseif ($kq === -2) {
+        echo "<script>alert('Lỗi tải file hình ảnh! Kiểm tra định dạng hoặc kích thước file.');</script>";
+    } elseif ($kq === -1) {
+        echo "<script>alert('Lỗi kết nối server');</script>";
+    } else {
+        echo "<script>alert('Thêm sản phẩm thât bại!!! vui lòng thử lại'); </script>";
+    }
+}
 ?>

@@ -90,4 +90,24 @@ class CProduct
 
         return ($res !== -1) ? $res : -1; //kq -1 loi ket noi
     }
+
+    public function editProd($idsp, $tensp, $file, $pathimg, $giagoc, $giaban, $soluong, $idloai)
+    {
+        $p = new MProduct();
+        $upload = new CUpload();
+
+        if ($file['tmp_name'] != '') {
+            $pathname = $upload->uploadfile($file);
+        } else {
+            $pathname = $pathimg;
+        }
+
+        if ($pathname === false) {
+            return -2; // -2 Lỗi tải file
+        }
+
+        $res = $p->updateProd($idsp, $tensp,  $pathname, $giagoc, $giaban, $soluong, $idloai);
+
+        return ($res !== -1) ? $res : -1; //kq -1 loi ket noi
+    }
 }

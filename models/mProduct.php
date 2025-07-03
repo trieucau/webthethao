@@ -96,4 +96,27 @@ class MProduct
             return -1; //loi ket noi
         }
     }
+
+    public function updateProd($idsp, $tensp, $pathname, $giagoc, $giaban, $soluong, $idloai)
+    {
+        $p = new MConnect();
+        $conn = $p->openConnect();
+
+        if ($conn) {
+            $sql = "UPDATE sanpham SET TenSanPham = '$tensp',
+                    HinhAnh = '$pathname' , GiaGoc =  $giagoc ,
+                    GiaBan = $giaban , SoLuong = $soluong, 
+                    IDLoai =$idloai where IDSanPham = $idsp";
+
+            if (mysqli_query($conn, $sql)) {
+                $p->closeConnect($conn);
+                return true;
+            }
+
+            $p->closeConnect($conn);
+            return false;
+        } else {
+            return -1; //loi ket noi
+        }
+    }
 }

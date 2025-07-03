@@ -51,6 +51,11 @@
   box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
 }
 
+.wapperForm .active {
+  background: #4a90e2; /* Vibrant blue */
+  color: white;
+}
+
 /* Button styles */
 .wapperForm button {
   padding: 10px 20px;
@@ -63,6 +68,11 @@
 }
 
 .wapperForm button[type="submit"] {
+  background: #4a90e2; /* Vibrant blue */
+  color: white;
+}
+
+.wapperForm button[selected] {
   background: #4a90e2; /* Vibrant blue */
   color: white;
 }

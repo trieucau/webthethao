@@ -21,6 +21,24 @@ class MProduct
         }
     }
 
+    public function selectOneProd($id)
+    {
+        $p = new MConnect();
+        $conn = $p->openConnect($id);
+
+        if ($conn) {
+            $sql = "select * from sanpham s join loaisanpham l on s.IDLoai = l.IDLoai where IDSanPham = '$id' ";
+
+            $tbProd = mysqli_query($conn, $sql);
+
+            $p->closeConnect($conn);
+
+            return $tbProd;
+        } else {
+            return -1; //loi ket noi
+        }
+    }
+
     public function selectProdbyType($key)
     {
         $p = new MConnect();
@@ -66,6 +84,29 @@ class MProduct
 
         if ($conn) {
             $sql = "INSERT INTO sanpham (TenSanPham,HinhAnh, GiaGoc, GiaBan, SoLuong, IDLoai) VALUES ('$tensp', '$pathname', $giagoc, $giaban, $soluong, $idloai)";
+
+            if (mysqli_query($conn, $sql)) {
+                $p->closeConnect($conn);
+                return true;
+            }
+
+            $p->closeConnect($conn);
+            return false;
+        } else {
+            return -1; //loi ket noi
+        }
+    }
+
+    public function updateProd($idsp, $tensp, $pathname, $giagoc, $giaban, $soluong, $idloai)
+    {
+        $p = new MConnect();
+        $conn = $p->openConnect();
+
+        if ($conn) {
+            $sql = "UPDATE sanpham SET TenSanPham = '$tensp',
+                    HinhAnh = '$pathname' , GiaGoc =  $giagoc ,
+                    GiaBan = $giaban , SoLuong = $soluong, 
+                    IDLoai =$idloai where IDSanPham = $idsp";
 
             if (mysqli_query($conn, $sql)) {
                 $p->closeConnect($conn);

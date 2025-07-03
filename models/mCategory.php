@@ -38,4 +38,24 @@ class MCategory
             return -1; //loi ket noi
         }
     }
+
+    public function insertCate($name)
+    {
+        $p = new MConnect();
+        $conn = $p->openConnect();
+
+        if ($conn) {
+            $sql = "insert into loaisanpham (TenLoai) values ('$name')";
+
+            if (mysqli_query($conn, $sql)) {
+                $p->closeConnect($conn);
+                return true;
+            }
+
+            $p->closeConnect($conn);
+            return false;
+        } else {
+            return -1; //loi ket noi
+        }
+    }
 }

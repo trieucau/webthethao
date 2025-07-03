@@ -1,4 +1,5 @@
 <div class="wapperForm">
+    <h3>Thêm loại</h3>
     <form action="" method="post">
         <table>
             <tr>
@@ -14,20 +15,19 @@
         </table>
     </form>
 </div>
+
 <?php
-// include_once("controllers/cDangnhap.php");
-// $p = new CDangnhap();
-// if (isset($_POST["btnDn"])) {
-//     if ($p->checkLogin($_POST['textname'], $_POST['textpass'])) {
-//         $_SESSION['login'] = true;
-//         $gender = $_SESSION['gender'] == 1 ? 'anh' : 'chị';
-//         $fullname =  $_SESSION['fullname'];
-
-
-//         echo "<script>alert('Chào mừng $gender , $fullname quay lại'); </script>";
-//         header("refresh:0;url=index.php");
-//     } else {
-//         echo "<script>alert('Sai thông tin đăng nhập'); </script>";
-//     }
-// }
+include_once("controllers/cCategory.php");
+$p = new CCategory();
+if (isset($_REQUEST["btnAddloai"])) {
+    $kq = $p->addCate($_REQUEST['tenloai']);
+    if ($kq === true) {
+        echo "<script>alert('Thêm loại thành công!!!'); </script>";
+        header("refresh:0; url=admin.php?p=qlloai");
+    } elseif ($kq === -1) {
+        echo "<script>alert('Lỗi kết nối server');</script>";
+    } else {
+        echo "<script>alert('Thêm sản phẩm thât bại!!! vui lòng thử lại'); </script>";
+    }
+}
 ?>

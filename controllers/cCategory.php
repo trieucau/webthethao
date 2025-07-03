@@ -17,4 +17,13 @@ class CCategory
             return -2; //khong ton tai san pham
         }
     }
+
+    public function addCate($name)
+    {
+        $p = new MCategory();
+
+        $res = $p->insertCate($name);
+
+        return ($res !== -1) ? $res : -1; //kq -1 loi ket noi
+    }
 }

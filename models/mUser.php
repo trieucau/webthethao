@@ -23,19 +23,39 @@ include_once("models/mConnect.php");
         }
 
         public function selectAllUser(){
+            $p = new MConnect();
+            $conn = $p ->openConnect();
+
+            if($conn ){
+                $sql = "select * from user ";
+
+                $tbUser = mysqli_query( $conn, $sql );
+
+                $p->closeConnect($conn);
+
+                return $tbUser;
+
+            }else{
+                return -1; //loi ket noi
+            }
+        }
+
+        public function insertUser($username, $password, $fullname, $gender , $rote , $avatar )
+    {
         $p = new MConnect();
-        $conn = $p ->openConnect();
+        $conn = $p->openConnect();
 
-        if($conn ){
-            $sql = "select * from user ";
+        if ($conn) {
+            $sql = "INSERT INTO user (username, password, fullname, gender, rote, avatar) VALUES ('$username', '$password', '$fullname', $gender , $rote , '$avatar')";
 
-            $tbUser = mysqli_query( $conn, $sql );
+            if (mysqli_query($conn, $sql)) {
+                $p->closeConnect($conn);
+                return true;
+            }
 
             $p->closeConnect($conn);
-
-            return $tbUser;
-
-        }else{
+            return false;
+        } else {
             return -1; //loi ket noi
         }
     }

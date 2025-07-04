@@ -110,4 +110,13 @@ class CProduct
 
         return ($res !== -1) ? $res : -1; //kq -1 loi ket noi
     }
+
+    public function removeProd($idsp)
+    {
+        $p = new MProduct();
+
+        $res = $p->deleteProd($idsp);
+
+        return ($res !== -1) ? $res : -1; //kq -1 loi ket noi
+    }
 }

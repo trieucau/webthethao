@@ -41,6 +41,15 @@ include_once("controllers/cProduct.php");
                     <input type="text" name="txtsearch">
                     <button type="submit" name="btnTim">Tim</button>
                 </form>
+                  <?php 
+                    if (isset($_SESSION["avatar"])){
+                        echo '<div class="avatar">
+                                <img src="img/sp/'.$_SESSION["avatar"].'" 
+                                    width="40px" height="40px" style="border-radius: 50%; border: 1px solid gray; object-fit: cover;">
+                                </img>
+                            </div>';
+                    }
+                ?>
             </div>
         </div>
         <div class="main">
@@ -102,6 +111,9 @@ include_once("controllers/cProduct.php");
                     case 'suasp':
                         include_once('views/vUpdate.php');
                         break;
+                    case 'xoasp':
+                        include_once('views/vDelsp.php');
+                        break;
                     case 'quanli':
                         header("refresh:0;url=admin.php");
                         break;
@@ -110,7 +122,6 @@ include_once("controllers/cProduct.php");
                         include_once('views/vSanPham.php');
                 }
                 ?>
-
             </div>
         </div>
         <div class="footer">

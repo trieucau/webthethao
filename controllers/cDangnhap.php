@@ -12,6 +12,7 @@
                 while($row = $user->fetch_assoc()){
                     $_SESSION['fullname'] = $row['fullname'];
                     $_SESSION['gender'] = $row['gender'];
+                     $_SESSION['avatar'] = $row['avatar'];
                 }
                 
                 return true;
@@ -22,6 +23,4 @@
         }
 
     }
-
-
 ?>

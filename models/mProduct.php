@@ -119,4 +119,23 @@ class MProduct
             return -1; //loi ket noi
         }
     }
+    public function deleteProd($idsp)
+    {
+        $p = new MConnect();
+        $conn = $p->openConnect();
+
+        if ($conn) {
+            $sql = "DELETE FROM sanpham WHERE IDSanPham= $idsp ;";
+
+            if (mysqli_query($conn, $sql)) {
+                $p->closeConnect($conn);
+                return true;
+            }
+
+            $p->closeConnect($conn);
+            return false;
+        } else {
+            return -1; //loi ket noi
+        }
+    }
 }

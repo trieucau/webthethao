@@ -21,11 +21,13 @@
 <?php
 include_once("controllers/cDangnhap.php");
 $p = new CDangnhap();
+$m = new MUser();
 if (isset($_POST["btnDn"])) {
     if ($p->checkLogin($_POST['textname'], $_POST['textpass'])) {
         $_SESSION['login'] = true;
         $gender = $_SESSION['gender'] == 1 ? 'anh' : 'chị';
         $fullname =  $_SESSION['fullname'];
+      
 
         echo "<script>alert('Chào mừng $gender , $fullname quay lại'); </script>";
         header("refresh:0;url=index.php");

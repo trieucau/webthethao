@@ -39,7 +39,16 @@ include_once("controllers/cProduct.php");
                 <form action="" method="get">
                     <input type="text" name="txtsearch">
                     <button type="submit" name="btnTim">Tìm</button>
-                </form>
+                </form >
+                <?php 
+                    if (isset($_SESSION["avatar"])){
+                        echo '<div class="avatar">
+                                <img src="img/sp/'.$_SESSION["avatar"].'" 
+                                    width="40px" height="40px" style="border-radius: 50%; border: 1px solid gray; object-fit: cover;">
+                                </img>
+                            </div>';
+                    }
+                ?>
             </div>
         </div>
         <div class="main">
@@ -56,6 +65,9 @@ include_once("controllers/cProduct.php");
                         break;
                     case 'dangxuat':
                         include_once('views/vDangxuat.php');
+                        break;
+                    case 'dangky':
+                        include_once('views/vDangky.php');
                         break;
                     case 'quanli':
                         header("refresh:0;url=admin.php");

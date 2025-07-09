@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2025 at 03:24 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: Jul 09, 2025 at 08:40 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `loaisanpham` (
   `IDLoai` int(11) NOT NULL,
-  `TenLoai` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
+  `TenLoai` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -41,7 +41,29 @@ INSERT INTO `loaisanpham` (`IDLoai`, `TenLoai`) VALUES
 (2, 'Giày chạy bộ'),
 (3, 'Dây kháng lực'),
 (4, 'Quần thể thao'),
-(5, 'Găng tay tập gym');
+(5, 'Găng tay tập gym'),
+(9, 'Bình nước');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role`
+--
+
+CREATE TABLE `role` (
+  `IDRole` int(11) NOT NULL,
+  `rolename` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`IDRole`, `rolename`, `description`) VALUES
+(1, 'khachhang', 'Người dùng mua hàng, quản lý tài khoản và theo dõi đơn hàng'),
+(2, 'nhanvien', 'Nhân viên xử lý đơn hàng và hỗ trợ khách hàng'),
+(3, 'quanli', 'Quản lý toàn bộ hệ thống, nhân viên và báo cáo');
 
 -- --------------------------------------------------------
 
@@ -50,11 +72,11 @@ INSERT INTO `loaisanpham` (`IDLoai`, `TenLoai`) VALUES
 --
 
 CREATE TABLE `sanpham` (
-  `IDSanPham` int(10) NOT NULL,
-  `TenSanPham` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `HinhAnh` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `GiaBan` int(11) DEFAULT NULL,
+  `IDSanPham` int(11) NOT NULL,
+  `TenSanPham` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `HinhAnh` varchar(255) DEFAULT NULL,
   `GiaGoc` int(11) DEFAULT NULL,
+  `GiaBan` int(11) DEFAULT NULL,
   `SoLuong` int(11) DEFAULT NULL,
   `IDLoai` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -63,7 +85,7 @@ CREATE TABLE `sanpham` (
 -- Dumping data for table `sanpham`
 --
 
-INSERT INTO `sanpham` (`IDSanPham`, `TenSanPham`, `HinhAnh`, `GiaBan`, `GiaGoc`, `SoLuong`, `IDLoai`) VALUES
+INSERT INTO `sanpham` (`IDSanPham`, `TenSanPham`, `HinhAnh`, `GiaGoc`, `GiaBan`, `SoLuong`, `IDLoai`) VALUES
 (2, 'Áo thể thao nam Nike Dri-FIT', 'ao_nike.jpg', 350000, 299000, 50, 1),
 (3, 'Áo thể thao nữ Adidas Clima', 'ao_adidas.jpg', 370000, 315000, 30, 1),
 (4, 'Áo tanktop thể hình', 'ao_tanktop.jpg', 250000, 210000, 40, 1),
@@ -88,9 +110,7 @@ INSERT INTO `sanpham` (`IDSanPham`, `TenSanPham`, `HinhAnh`, `GiaBan`, `GiaGoc`,
 (23, 'Găng tay có đệm lòng bàn tay', 'gang_dem.jpg', 220000, 189000, 42, 5),
 (24, 'Găng tay da thật cao cấp', 'gang_dathat.jpg', 300000, 269000, 36, 5),
 (25, 'Găng tay tập gym nữ', 'gang_nu.jpg', 200000, 169000, 38, 5),
-(26, 'Găng tay full ngón bảo vệ', 'gang_full.jpg', 250000, 215000, 34, 5),
-(32, 'san pham new', 'day_mini20250627024356.jpg', 140000, 160000, 23, 3),
-(33, 'san pham new 2', 'day_khangluc_5cap20250627030202.jpg', 230000, 250000, 30, 3);
+(26, 'Găng tay full ngón bảo vệ', 'gang_full.jpg', 250000, 215000, 34, 5);
 
 -- --------------------------------------------------------
 
@@ -100,19 +120,23 @@ INSERT INTO `sanpham` (`IDSanPham`, `TenSanPham`, `HinhAnh`, `GiaBan`, `GiaGoc`,
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `fullname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `fullname` varchar(100) NOT NULL,
   `gender` tinyint(1) NOT NULL,
-  `rote` int(11) DEFAULT NULL
+  `IDRole` int(11) NOT NULL,
+  `avatar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `fullname`, `gender`, `rote`) VALUES
-(1, 'trieudev', '202cb962ac59075b964b07152d234b70', 'phan thanh trieu', 1, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `fullname`, `gender`, `IDRole`, `avatar`) VALUES
+(1, 'trieudev', '202cb962ac59075b964b07152d234b70', 'Phan Thành Triều', 1, 1, 'quanAP20250709202951.jpg'),
+(3, 'khach01', '123', 'Nguyễn Văn An', 1, 1, 'songtung20250709202933.jpg'),
+(4, 'nhanvien01', '123', 'Lê Thị B', 0, 2, 'mytam.jpg'),
+(5, 'quanli01', 'admin', 'Trần Minh Cường', 1, 3, 'anhtuan.jpg');
 
 --
 -- Indexes for dumped tables
@@ -123,6 +147,12 @@ INSERT INTO `user` (`id`, `username`, `password`, `fullname`, `gender`, `rote`) 
 --
 ALTER TABLE `loaisanpham`
   ADD PRIMARY KEY (`IDLoai`);
+
+--
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`IDRole`);
 
 --
 -- Indexes for table `sanpham`
@@ -136,23 +166,36 @@ ALTER TABLE `sanpham`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD UNIQUE KEY `username` (`username`),
+  ADD KEY `IDRole` (`IDRole`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `loaisanpham`
+--
+ALTER TABLE `loaisanpham`
+  MODIFY `IDLoai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `IDRole` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `IDSanPham` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `IDSanPham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
@@ -163,6 +206,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `sanpham`
   ADD CONSTRAINT `sanpham_ibfk_1` FOREIGN KEY (`IDLoai`) REFERENCES `loaisanpham` (`IDLoai`);
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`IDRole`) REFERENCES `role` (`IDRole`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -7,7 +7,7 @@ class CDangnhap
         $muser = new MUser();
         $passmd5 = md5($password);
 
-        $user = $muser->selectOneUser($username,  $passmd5);
+        $user = $muser->selectOneUserByName($username,  $passmd5);
 
         if ($user->num_rows > 0) {
 

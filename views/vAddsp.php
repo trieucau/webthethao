@@ -46,7 +46,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button type="submit" name="btnAddsp">Thêm sản phẩm </button>
+                    <button type="submit" name="btnAddsp">Thêm</button>
                     <button type="reset">Nhập lại</button>
                 </td>
             </tr>

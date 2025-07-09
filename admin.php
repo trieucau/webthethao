@@ -113,8 +113,14 @@ if (!isset($_SESSION['role_id'])) {
                     case 'themLoai':
                         include_once('views/vAddloai.php');
                         break;
+                    case 'sualoai':
+                        include_once('views/vUpdateloai.php');
+                        break;
+                    case 'xoaloai':
+                        include_once('views/vDelloai.php');
+                        break;
                     case 'suasp':
-                        include_once('views/vUpdate.php');
+                        include_once('views/vUpdatesp.php');
                         break;
                     case 'xoasp':
                         include_once('views/vDelsp.php');
@@ -124,6 +130,8 @@ if (!isset($_SESSION['role_id'])) {
                         break;
                     case 'qlnguoidung':
                     case 'themND':
+                    case 'suand':
+                    case 'xoand':
                         // CHỈ admin (role_id == 3) mới được phép
                         if (isset($_SESSION['role_id']) && $_SESSION['role_id'] == 3) {
                             switch ($page) {
@@ -132,6 +140,12 @@ if (!isset($_SESSION['role_id'])) {
                                     break;
                                 case 'themND':
                                     include_once('views/vAddnd.php');
+                                    break;
+                                case 'suand':
+                                    include_once('views/vUpdatend.php');
+                                    break;
+                                case 'xoand':
+                                    include_once('views/vDelnd.php');
                                     break;
                             }
                         } else {

@@ -8,7 +8,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button type="submit" name="btnAddloai">Thêm loại </button>
+                    <button type="submit" name="btnAddloai">Thêm </button>
                     <button type="reset">Nhập lại</button>
                 </td>
             </tr>
@@ -27,7 +27,7 @@ if (isset($_REQUEST["btnAddloai"])) {
     } elseif ($kq === -1) {
         echo "<script>alert('Lỗi kết nối server');</script>";
     } else {
-        echo "<script>alert('Thêm sản phẩm thât bại!!! vui lòng thử lại'); </script>";
+        echo "<script>alert('Thêm loại thât bại!!! vui lòng thử lại'); </script>";
     }
 }
 ?>

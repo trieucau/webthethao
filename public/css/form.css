@@ -6,7 +6,15 @@
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background: #f8f9fa; /* Light gray background */
+  background: #f8f9fa;
+}
+
+.wapperForm h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: var(--primary-color);
+  font-weight: 600;
 }
 
 /* Form styles */

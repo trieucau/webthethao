@@ -19,10 +19,12 @@ if (!isset($_SESSION['role_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>admin</title>
+
     <link rel="stylesheet" href="public/css/index.css">
     <link rel="stylesheet" href="public/css/form.css">
     <link rel="stylesheet" href="public/css/quanli.css">
     <link rel="stylesheet" href="public/css/sanpham.css">
+    <link rel="stylesheet" href="public/css/dash.css">
 </head>
 
 <body>

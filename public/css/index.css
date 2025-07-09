@@ -13,7 +13,7 @@
   --primary-color: #4a90e2;
   --secondary-color: #f5a623;
   --accent-color: #ff6b6b;
-  --bg-color: #f8f9fa;
+  --bg-color: #95c5f5;
   --text-color: #333;
   --nav-bg: #ffffff;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -214,44 +214,6 @@
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
   overflow-y: auto;
-}
-
-.container .right .DashboardWarpper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  background-color: #f0f2f5;
-  min-height: 100vh;
-  box-sizing: border-box;
-}
-.DashboardWarpper .card {
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 25px 20px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.DashboardWarpper .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.DashboardWarpper .card h3 {
-  margin-top: 0;
-  color: #333;
-  font-size: 20px;
-}
-
-.DashboardWarpper .card p {
-  font-size: 16px;
-  color: #555;
-}
-
-.DashboardWarpper .card span {
-  font-weight: bold;
-  color: #007bff;
 }
 
 /* Footer styles */

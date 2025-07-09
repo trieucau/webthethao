@@ -67,7 +67,9 @@ class CUser
             return -2; // -2 Lỗi tải file
         }
 
-        $res = $p->updatetUser($id, $username, $password, $fullname, $gender, $role, $pathname);
+        $passmd5 = md5($password);
+
+        $res = $p->updatetUser($id, $username,  $passmd5, $fullname, $gender, $role, $pathname);
 
         return ($res !== -1) ? $res : -1; //kq -1 loi ket noi
     }

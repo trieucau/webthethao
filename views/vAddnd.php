@@ -15,22 +15,19 @@
                 <td><input type="password" name="textpass" id="" required></td>
             </tr>
             <tr>
-                <td>Nhập lại mật khẩu</td>
-                <td><input type="password" name="textpass" id="" required></td>
-            </tr>
-            <tr>
                 <td>Giới tính: </td>
                 <td>
-                    <input type="radio" name="gioitinh" value="nam">Nam
-                     <input type="radio" name="gioitinh" value="nu">Nữ
+                    <input type="radio" name="gioitinh" value=1>Nam
+                     <input type="radio" name="gioitinh" value=0>Nữ
 
                 </td>
             </tr>
             <tr>
                 <td>Vai trò: </td>
                 <td>
-                    <input type="radio" name="gioitinh" value="admin">Admin
-                     <input type="radio" name="gioitinh" value="user">User
+                    <input type="radio" name="role" value=3>Quản lí
+                     <input type="radio" name="role" value=2>Nhân viên
+                     <input type="radio" name="role" value=1>Khách hàng
                 </td>
             </tr>
             <tr>

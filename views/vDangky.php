@@ -1,7 +1,6 @@
-
 <div class="wapperForm">
     <h3>Đăng ký tài khoản</h3>
-    <form action="" method="post" enctype="multipart/form-data" >
+    <form action="" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>Họ và tên: </td>
@@ -15,10 +14,10 @@
                 <td>Mật khẩu</td>
                 <td><input type="password" name="pass" id="" required></td>
             </tr>
-              <tr>
+            <tr>
                 <td>Hình ảnh</td>
-                <td><input type="file" name="avatar"  id="" required></td>
-                <td><input type="hidden" name="rote" value=2 ></td>
+                <td><input type="file" name="avatar" id="" required></td>
+                <td><input type="hidden" name="role" value=1></td>
 
             </tr>
             <tr>
@@ -43,7 +42,7 @@ $p = new CUser();
 if (isset($_REQUEST["btnDk"])) {
     echo $_FILES['avatar']['tmp_name'];
     //$username, $password, $fullname, $gender , $rote , $file
-    $kq = $p->addUser($_REQUEST['username'], $_REQUEST['pass'], $_REQUEST['fullname'], $_REQUEST['gender'], $_REQUEST['rote'], $_FILES['avatar']);
+    $kq = $p->addUser($_REQUEST['username'], $_REQUEST['pass'], $_REQUEST['fullname'], $_REQUEST['gender'], $_REQUEST['role'], $_FILES['avatar']);
     if ($kq === true) {
         echo "<script>alert('Đăng ký thành công!!!'); </script>";
         header("refresh:0; url=index.php?p=dangnhap");

@@ -1,6 +1,16 @@
 <?php
 session_start();
 include_once("controllers/cProduct.php");
+
+if (!isset($_SESSION['role_id'])) {
+    echo "<script>alert('Bạn chưa thực hiện đăng nhập!!!'); </script>";
+    header("refresh:0; url=index.php?p=dangnhap");
+} else {
+    if ($_SESSION['role_id'] != 2 && $_SESSION['role_id'] != 3) {
+        echo "<script>alert('Bạn không có quyền vào trang này!!!'); </script>";
+        header("refresh:0; url=index.php");
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,14 +51,14 @@ include_once("controllers/cProduct.php");
                     <input type="text" name="txtsearch">
                     <button type="submit" name="btnTim">Tim</button>
                 </form>
-                  <?php 
-                    if (isset($_SESSION["avatar"])){
-                        echo '<div class="avatar">
-                                <img src="img/sp/'.$_SESSION["avatar"].'" 
+                <?php
+                if (isset($_SESSION["avatar"])) {
+                    echo '<div class="avatar">
+                                <img src="img/sp/' . $_SESSION["avatar"] . '" 
                                     width="40px" height="40px" style="border-radius: 50%; border: 1px solid gray; object-fit: cover;">
                                 </img>
                             </div>';
-                    }
+                }
                 ?>
             </div>
         </div>
@@ -68,21 +78,22 @@ include_once("controllers/cProduct.php");
                         <a href="admin.php?p=themSP">Thêm Sản Phẩm</a>
                     </div>
                 </div>
-                <div class="dropdown">
-                    <button class="dropbtn">Quản lí Người Dùng</button>
-                    <div class="dropdown-content">
-                        <a href="admin.php?p=qlnguoidung">Danh sách Người dùng</a>
-                        <a href="admin.php?p=themND">Thêm Người dùng</a>
-                    </div>
-                </div>
-
+                <?php
+                if ($_SESSION['role_id'] == 3) {
+                    echo '<div class="dropdown">
+                        <button class="dropbtn">Quản lí Người Dùng</button>
+                        <div class="dropdown-content">
+                            <a href="admin.php?p=qlnguoidung">Danh sách Người dùng</a>
+                            <a href="admin.php?p=themND">Thêm Người dùng</a>
+                        </div>
+                    </div>';
+                }
+                ?>
             </div>
             <div class="right">
-                <?php // echo htmlspecialchars($_SERVER['REQUEST_URI']); 
-                ?>
-
                 <?php
                 $page = isset($_REQUEST['p']) ? $_REQUEST['p'] : '';
+
                 switch ($page) {
                     case 'dangnhap':
                         include_once('views/vDangnhap.php');
@@ -96,17 +107,11 @@ include_once("controllers/cProduct.php");
                     case 'qlsanpham':
                         include_once('views/vQlsanpham.php');
                         break;
-                    case 'qlnguoidung':
-                        include_once('views/vQlnguoidung.php');
-                        break;
                     case 'themSP':
                         include_once('views/vAddsp.php');
                         break;
                     case 'themLoai':
                         include_once('views/vAddloai.php');
-                        break;
-                    case 'themND':
-                        include_once('views/vAddnd.php');
                         break;
                     case 'suasp':
                         include_once('views/vUpdate.php');
@@ -117,9 +122,26 @@ include_once("controllers/cProduct.php");
                     case 'quanli':
                         header("refresh:0;url=admin.php");
                         break;
+                    case 'qlnguoidung':
+                    case 'themND':
+                        // CHỈ admin (role_id == 3) mới được phép
+                        if (isset($_SESSION['role_id']) && $_SESSION['role_id'] == 3) {
+                            switch ($page) {
+                                case 'qlnguoidung':
+                                    include_once('views/vQlnguoidung.php');
+                                    break;
+                                case 'themND':
+                                    include_once('views/vAddnd.php');
+                                    break;
+                            }
+                        } else {
+                            echo "<script>alert('Bạn không có quyền vào trang này!!!'); </script>";
+                            header("refresh:0; url=admin.php");
+                        }
+                        break;
 
                     default:
-                        include_once('views/vSanPham.php');
+                        include_once('views/vDashboard.php');
                 }
                 ?>
             </div>

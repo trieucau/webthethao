@@ -39,16 +39,17 @@ include_once("controllers/cProduct.php");
                 <form action="" method="get">
                     <input type="text" name="txtsearch">
                     <button type="submit" name="btnTim">Tìm</button>
-                </form >
-                <?php 
-                    if (isset($_SESSION["avatar"])){
-                        echo '<div class="avatar">
-                                <img src="img/sp/'.$_SESSION["avatar"].'" 
+                </form>
+                <?php
+                if (isset($_SESSION["avatar"])) {
+                    echo '<div class="avatar">
+                                <img src="img/sp/' . $_SESSION["avatar"] . '" 
                                     width="40px" height="40px" style="border-radius: 50%; border: 1px solid gray; object-fit: cover;">
                                 </img>
                             </div>';
-                    }
+                }
                 ?>
+
             </div>
         </div>
         <div class="main">

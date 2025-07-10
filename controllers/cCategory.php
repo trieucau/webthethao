@@ -59,4 +59,21 @@ class CCategory
 
         return ($res !== -1) ? $res : -1; //kq -1 loi ket noi
     }
+
+    public function getCatebyName($name)
+    {
+        $p = new MCategory();
+
+        $res = $p->selectCatebyName($name);
+
+        if ($res instanceof mysqli_result) {
+            if ($res->num_rows > 0) {
+                return $res;
+            } else {
+                return -2; //khong ton tai loai
+            }
+        } else {
+            return -1; //loi ket noi
+        }
+    }
 }

@@ -61,6 +61,25 @@ class MUser
         }
     }
 
+    public function selectUserbyName($name)
+    {
+        $p = new MConnect();
+        $conn = $p->openConnect();
+
+        if ($conn) {
+            $sql = "SELECT * FROM user 
+              WHERE fullname LIKE '%$name%' ";
+
+            $dataUser = mysqli_query($conn, $sql);
+
+            $p->closeConnect($conn);
+
+            return $dataUser;
+        } else {
+            return -1; //loi ket noi
+        }
+    }
+
     public function insertUser($username, $password, $fullname, $gender, $role, $avatar)
     {
         $p = new MConnect();

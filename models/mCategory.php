@@ -99,4 +99,23 @@ class MCategory
             return -1; //loi ket noi
         }
     }
+
+    public function selectCatebyName($name)
+    {
+        $p = new MConnect();
+        $conn = $p->openConnect();
+
+        if ($conn) {
+            $sql = "SELECT * FROM loaisanpham 
+              WHERE TenLoai LIKE '%$name%' ";
+
+            $dataCat = mysqli_query($conn, $sql);
+
+            $p->closeConnect($conn);
+
+            return $dataCat;
+        } else {
+            return -1; //loi ket noi
+        }
+    }
 }

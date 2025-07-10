@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2025 at 08:40 PM
+-- Generation Time: Jul 10, 2025 at 06:19 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,7 +42,8 @@ INSERT INTO `loaisanpham` (`IDLoai`, `TenLoai`) VALUES
 (3, 'Dây kháng lực'),
 (4, 'Quần thể thao'),
 (5, 'Găng tay tập gym'),
-(9, 'Bình nước');
+(9, 'Bình nước'),
+(10, 'Nón thể thao update');
 
 -- --------------------------------------------------------
 
@@ -110,7 +111,9 @@ INSERT INTO `sanpham` (`IDSanPham`, `TenSanPham`, `HinhAnh`, `GiaGoc`, `GiaBan`,
 (23, 'Găng tay có đệm lòng bàn tay', 'gang_dem.jpg', 220000, 189000, 42, 5),
 (24, 'Găng tay da thật cao cấp', 'gang_dathat.jpg', 300000, 269000, 36, 5),
 (25, 'Găng tay tập gym nữ', 'gang_nu.jpg', 200000, 169000, 38, 5),
-(26, 'Găng tay full ngón bảo vệ', 'gang_full.jpg', 250000, 215000, 34, 5);
+(26, 'Găng tay full ngón bảo vệ', 'gang_full.jpg', 250000, 215000, 34, 5),
+(33, 'test  ', 'binhnuoc220250710051142.jpg', 11, 11, 11, 10),
+(34, 'test2', 'binhnuoc20250710051334.jpg', 2, 2, 2, 9);
 
 -- --------------------------------------------------------
 
@@ -134,9 +137,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `fullname`, `gender`, `IDRole`, `avatar`) VALUES
 (1, 'trieudev', '202cb962ac59075b964b07152d234b70', 'Phan Thành Triều', 1, 1, 'quanAP20250709202951.jpg'),
-(3, 'khach01', '123', 'Nguyễn Văn An', 1, 1, 'songtung20250709202933.jpg'),
-(4, 'nhanvien01', '123', 'Lê Thị B', 0, 2, 'mytam.jpg'),
-(5, 'quanli01', 'admin', 'Trần Minh Cường', 1, 3, 'anhtuan.jpg');
+(3, 'khach01', '202cb962ac59075b964b07152d234b70', 'Nguyễn Văn An', 1, 1, 'songtung20250709202933.jpg'),
+(4, 'nhanvien01', '202cb962ac59075b964b07152d234b70', 'Lê Thị B', 0, 2, 'mytam.jpg'),
+(5, 'quanli01', '21232f297a57a5a743894a0e4a801fc3', 'Trần Minh Cường', 1, 3, 'anhtuan.jpg'),
+(14, 'quanli03', '202cb962ac59075b964b07152d234b70', 'Trần Thị Thủy', 0, 3, 'mytam20250710052944.jpg');
 
 --
 -- Indexes for dumped tables
@@ -177,7 +181,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `loaisanpham`
 --
 ALTER TABLE `loaisanpham`
-  MODIFY `IDLoai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `IDLoai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `role`
@@ -189,13 +193,13 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `IDSanPham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `IDSanPham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables

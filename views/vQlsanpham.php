@@ -27,8 +27,10 @@
                 <th>Loại </th>
                 <th>Thao tác</th>
             </tr>";
-    while ($row = $resProdAll->fetch_assoc()) {
-        echo "<tr>
+
+    if ($resProdAll instanceof mysqli_result) {
+        while ($row = $resProdAll->fetch_assoc()) {
+            echo "<tr>
         <td>" . $dem++ . "</td>
         <td>" . $row['TenSanPham'] . "</td>
         <td><img src = 'img/sp/" . $row['HinhAnh'] . "' alt='" . $row['HinhAnh'] . "'></img></td>
@@ -41,7 +43,16 @@
             <a href='?p=xoasp&idsp=" . $row['IDSanPham'] . "'>Xóa</a>
         </td>
     </tr>";
+        }
+    } else {
+        // Trường hợp lỗi (giá trị -1 hoặc -2)
+        if ($resProdAll == -1) {
+            echo "<tr><td colspan='8' style='color: red; text-align: center;'>Lỗi server!</td></tr>";
+        } else {
+            echo "<tr><td colspan='8' style='color: red; text-align: center;'>Không tồn tại loại nào!</td></tr>";
+        }
     }
+
     echo "</table>";
     ?>
 </div>

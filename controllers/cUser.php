@@ -33,6 +33,23 @@ class CUser
         }
     }
 
+    public function getUserbyName($name)
+    {
+        $p = new MUser();
+
+        $res = $p->selectUserbyName($name);
+
+        if ($res instanceof mysqli_result) {
+            if ($res->num_rows > 0) {
+                return $res;
+            } else {
+                return -2; //khong ton tai loai
+            }
+        } else {
+            return -1; //loi ket noi
+        }
+    }
+
 
     public function addUser($username, $password, $fullname, $gender, $role, $file)
     {
